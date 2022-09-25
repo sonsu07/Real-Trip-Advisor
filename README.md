@@ -7,6 +7,11 @@
 * 국내 여행 정보사이트 제작
 * 국내 주요 도시 및 여행지 ( 우선적으로 제주도 위주 )
 
+## Technical Stack
+* Javascript
+  * jQuery UI
+    * Datepicker
+
 ## Requirements
 - [ ] 원하는 기간(from, to)을 선택하여 여행지 검색, 날짜는 달력으로 선택
 - [ ] 회원가입
