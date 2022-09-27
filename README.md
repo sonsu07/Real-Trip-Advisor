@@ -8,9 +8,10 @@
 * 국내 주요 도시 및 여행지 ( 우선적으로 제주도 위주 )
 
 ## Technical Stack
-* Javascript
+* Javascript - Default
   * jQuery UI
     * Datepicker
+* Ajax
 
 ## Requirements
 - [ ] 스크롤 이동시 헤더 가시성 유지
@@ -36,3 +37,12 @@
   * layouts 폴더 참고
 * 프론트엔드 작업이니만큼 로그인/로그아웃 기능은 구현하지 않음
   * 차후 붙일 예정.
+
+
+* 작업 도중 데모용으로 만들어진 서버 API의 인코딩이 EUC-KR로 되어 있는 것을 확인.
+  * Ajax로 통신할 경우에는 json파일 내용을 그대로 받아 올 수 있기에 상관없지만, fetch로 통신할 경우 json파일을 별도의 객체로 변환하는 과정에서 인코딩이 깨지는 현상을 확인
+  * 자바스크립트 내부적으로는 EUC-KR을 UTF-8로 바꾸기가 힘들다고 판단.
+  * 서버에서 인코딩 형식을 UTF-8로 변경하여 JSON 파일을 다시 올리거나, Ajax로 통신을 해야하는 상황으로 보고, 현재 프로젝트에서 서버통신에 사용되는 함수를 Ajax로 교체
+  * ajax의 사용방법은 xmlhttprequest 형식으로 사용하는 방법과 jQuery를 이용한 방식으로 나뉨.
+  * 현재 jQuery의 DatePicker 라이브러리를 기용중인 상황이기도 하고, 부득이하게 Ajax도 사용해야 하는 상황이기에 일관성 강화를 위해 jQuery에 대한 사용도 고려하였지만, 성능상의 이슈가 있음에도 불구하고 IE와의 호환성 문제로만 사용되던 jQuery를 IE가 사장된 지금도 다시금 사용하는것은 좋지 않다고 판단. 
+  * 따라서 jQuery의 사용은 지양한 채, DatePicker을 사용할때만 이용하고, ajax 또한 순수 ajax(xmlhttprequest)만 사용 가능한 바닐라 자바스크립트로 프로젝트를 진행.
