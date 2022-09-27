@@ -59,10 +59,12 @@ function search(from, to) {
             let listPanel = document.querySelector('#list-panel');
             res.forEach(data => {
                 let item = createListItem(data);
-                listPanel.appendChild(item);
+                // listPanel.appendChild(item);
+                listPanel.append(item);
             })
             const listBg = document.querySelector('#list-bg');
             listBg.style.display = 'block';
+            // $('#list-bg').show(); // .show()는 display 속성을 block로 바꿔준다.
         } else {
             console.error('Error', xhr.status, xhr.statusText);
         }
@@ -88,15 +90,14 @@ function formSubmit() {
 function createListItem(data) {
     const template1 = document.querySelector('#list-item-template').cloneNode(true);
     template1.removeAttribute('id');
-
     template1.querySelector('.list-item-image').src = data.titleImageUrl;
     template1.querySelector('.list-item-name').innerHTML = data.name;
     template1.querySelector('.list-item-city-name').innerHTML = data.cityName;
 
-    template1.click(e => {
-        let myUrl = 'detail.html?id=' + data.id;
-        window.location = myUrl;
-    })
+    template1.click(function () {
+        window.location = 'https://www.naver.com/';
+        console.log('1');
+    });
 
     return template1;
 }
