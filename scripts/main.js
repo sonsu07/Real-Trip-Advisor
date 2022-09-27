@@ -41,14 +41,16 @@ function formatParams( params ){
 
 // ajax를 이용한 검색기능.
 function search(from, to) {
-    let url = 'https://javascript-basic.appspot.com/searchLocation'
-    let params = {
+    const params = {
         from: from,
         to: to,
     }
-    url = url + formatParams(params)
-    const xhr = new XMLHttpRequest();
+    let query = Object.keys(params)
+        .map(k =>encodeURIComponent(k) + '=' +encodeURIComponent(params[k]))
+        .join('&');
+    let url = 'https://javascript-basic.appspot.com/searchLocation?' + query;
 
+    const xhr = new XMLHttpRequest();
     xhr.open('GET', url);
     xhr.send();
     xhr.onload = (e) => {
@@ -95,8 +97,7 @@ function createListItem(data) {
     template1.querySelector('.list-item-city-name').innerHTML = data.cityName;
 
     template1.click(function () {
-        window.location = 'https://www.naver.com/';
-        console.log('1');
+        window.location = 'detail.html?id=' + data.id;
     });
 
     return template1;
