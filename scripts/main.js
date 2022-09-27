@@ -46,8 +46,9 @@ function search(from, to) {
         to: to,
     }
     let query = Object.keys(params)
-        .map(k =>encodeURIComponent(k) + '=' +encodeURIComponent(params[k]))
+        .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
         .join('&');
+    console.log(query);
     let url = 'https://javascript-basic.appspot.com/searchLocation?' + query;
 
     const xhr = new XMLHttpRequest();

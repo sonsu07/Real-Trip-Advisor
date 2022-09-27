@@ -1,8 +1,18 @@
 function getDetail(id) {
-    let url = new URL('https://javascript-basic.appspot.com/locationDetail');
-    // let url = 'https://javascript-basic.appspot.com/locationDetail';
-    url.searchParams.set('id', id);
+    const params = {
+        id: id,
+    }
+    let query = Object.keys(params)
+        .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+        .join('&');
+    let url = 'https://javascript-basic.appspot.com/locationDetail?' + query;
+    // url = decodeURIComponent(url)
+    console.log(url)
+
+    // let url = new URL('https://javascript-basic.appspot.com/locationDetail');
+    // url = decodeURIComponent(url);
     const xhr = new XMLHttpRequest();
+    // url.searchParams.set('id', id);
     xhr.open('GET', url);
     xhr.send();
     xhr.onload = (e) => {
@@ -32,5 +42,5 @@ function parseId(str) {
     return null;
 }
 
-// console.log(window.location.search);
+console.log(window.location.search);
 getId();
