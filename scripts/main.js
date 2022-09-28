@@ -30,37 +30,66 @@ function CalendarWidget() {
 CalendarWidget();
 
 function search(from, to) {
-    const params = {
-        from: from,
-        to: to,
-    }
-    let query = Object.keys(params)
-        .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
-        .join('&');
-    let url = 'https://javascript-basic.appspot.com/searchLocation?' + query;
+    // const params = {
+    //     from: from,
+    //     to: to,
+    // }
+    // let query = Object.keys(params)
+    //     .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+    //     .join('&');
+    // let url = 'https://javascript-basic.appspot.com/searchLocation?' + query;
 
-    // let url = 'https://javascript-basic.appspot.com/searchLocation'
+    let url = 'https://javascript-basic.appspot.com/searchLocation'
 
-    fetch(url)
-        .then((res) => res.json())
+    let myHeaders = new Headers([
+        ['Content-Type', 'applicaton/json; charset=Base64']
+    ]);
+    // myHeaders.append('Content-Type','text/html; charset=euc-kr');
+
+    loadItems(url)
         .then((res) => {
-            // console.log(res);
+
+            console.log(res);
 
             let listPanel = document.querySelector('#list-panel');
 
+            // res.forEach(item => {
+            //
+            //     let getItem = createListItem(item);
+            //     listPanel.append(getItem);
+            // })
             for (let i = 0; i < res.length; i++) {
                 let data = res[i];
-                let getItem = createListItem(data);
+                let getData = createListItem(data);
+                listPanel.append(getData);
 
-                listPanel.append(getItem);
+                for (let j = 0; j < res[i].length; j++) {
+                    let cityName = res[i].cityName;
+                    cityName = cityName.toString()
+
+                    let name = res[i].name;
+                    name = name.toString();
+
+                    let desc = res[i].desc;
+                    desc = desc.toString();
+                }
             }
+
             const listBg = document.querySelector('#list-bg');
             listBg.style.display = 'block';
-            // listBg.className = 'show';
         })
-        .catch((err) => {
-            console.log(err);
-        })
+}
+
+function loadItems(url) {
+    return fetch(url)
+        .then(res => res.json())
+        // .then(res => res.arrayBuffer())
+        // .then(buffer => {
+        //     let decoder = new TextDecoder("euc-kr");
+        //     let text = decoder.decode(buffer);
+        //     // handleText(text);
+        //     console.log(text);
+        // })
 }
 
 function formSubmit() {
@@ -69,9 +98,7 @@ function formSubmit() {
         e.preventDefault();
 
         let from = document.querySelector('#from').value;
-        console.log('from: ' + from);
         let to = document.querySelector('#to').value;
-        console.log('to: ' + to);
 
         search(from, to);
     })
