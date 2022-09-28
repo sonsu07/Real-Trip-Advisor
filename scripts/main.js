@@ -29,82 +29,8 @@ function CalendarWidget() {
     dpTo.datepicker('setDate', 4); // setDate 의 인자값은 여행 기간을 뜻함.
 }
 
-// http params
-function formatParams( params ){
-    return "?" + Object
-        .keys(params)
-        .map(function(key){
-            return key+"="+encodeURIComponent(params[key])
-        })
-        .join("&")
-}
-
 // ajax를 이용한 검색기능.
 function search(from, to) {
-<<<<<<< HEAD
-    // const params = {
-    //     from: from,
-    //     to: to,
-    // }
-    // let query = Object.keys(params)
-    //     .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
-    //     .join('&');
-    // let url = 'https://javascript-basic.appspot.com/searchLocation?' + query;
-
-    let url = 'https://javascript-basic.appspot.com/searchLocation'
-
-    let myHeaders = new Headers([
-        ['Content-Type', 'applicaton/json; charset=Base64']
-    ]);
-    // myHeaders.append('Content-Type','text/html; charset=euc-kr');
-
-    loadItems(url)
-        .then((res) => {
-
-            console.log(res);
-
-            let listPanel = document.querySelector('#list-panel');
-
-            // res.forEach(item => {
-            //
-            //     let getItem = createListItem(item);
-            //     listPanel.append(getItem);
-            // })
-            for (let i = 0; i < res.length; i++) {
-                let data = res[i];
-                let getData = createListItem(data);
-                listPanel.append(getData);
-
-                for (let j = 0; j < res[i].length; j++) {
-                    let cityName = res[i].cityName;
-                    cityName = cityName.toString()
-
-                    let name = res[i].name;
-                    name = name.toString();
-
-                    let desc = res[i].desc;
-                    desc = desc.toString();
-                }
-            }
-
-            const listBg = document.querySelector('#list-bg');
-            listBg.style.display = 'block';
-        })
-}
-
-function loadItems(url) {
-    return fetch(url)
-        .then(res => res.json())
-        // .then(res => res.arrayBuffer())
-        // .then(buffer => {
-        //     let decoder = new TextDecoder("euc-kr");
-        //     let text = decoder.decode(buffer);
-        //     // handleText(text);
-        //     console.log(text);
-        // })
-}
-
-=======
     const params = {
         from: from,
         to: to,
@@ -112,7 +38,6 @@ function loadItems(url) {
     let query = Object.keys(params)
         .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
         .join('&');
-    console.log(query);
     let url = 'https://javascript-basic.appspot.com/searchLocation?' + query;
 
     const xhr = new XMLHttpRequest();
@@ -138,8 +63,8 @@ function loadItems(url) {
     }
 }
 
+
 // 폼 제출 기능
->>>>>>> cd12c826689f52774764cec3893aa2b7587f705d
 function formSubmit() {
     let formSearch = document.querySelector('#form-search');
     formSearch.addEventListener('submit', function (e) {
@@ -160,9 +85,9 @@ function createListItem(data) {
     template1.querySelector('.list-item-name').innerHTML = data.name;
     template1.querySelector('.list-item-city-name').innerHTML = data.cityName;
 
-    template1.click(function () {
+    template1.addEventListener('click', function () {
         window.location = 'detail.html?id=' + data.id;
-    });
+    })
 
     return template1;
 }
