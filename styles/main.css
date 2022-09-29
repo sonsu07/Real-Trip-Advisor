@@ -356,7 +356,15 @@ button:hover {
 /* swiper */
 .swiper {
     width: 600px;
-    height: 300px;
-    background-color: #003eff;
+    height: 400px;
+    /*background-color: #003eff;*/
 }
 
+.swiper-scrollbar {
+    display: none;
+}
+
+.swiper-img-size {
+    width: 600px;
+    height: 400px;
+}

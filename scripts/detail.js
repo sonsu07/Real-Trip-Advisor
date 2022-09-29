@@ -1,5 +1,42 @@
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js'
 
+function swiperSetting() {
+    const swiper = new Swiper('.swiper', {
+        initialSlide : 0,
+        loop: true,
+        spaceBetween: 30,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+            // type: 'fraction',
+            // el: '.swiper-scrollbar',
+        },
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+}
+
+// useSwiper
+function createSwiperElem(data) {
+   let swiperWrapper = document.querySelector('.swiper-wrapper');
+   data.subImageList.forEach((item) => {
+       let swiperSlide = document.createElement('div');
+       swiperSlide.classList.add('swiper-slide');
+
+       let imgTag = document.createElement('img');
+       imgTag.src = item;
+       imgTag.classList.add('swiper-img-size')
+       swiperSlide.append(imgTag);
+
+       swiperWrapper.append(swiperSlide);
+   })
+
+}
+
 function getDetail(id) {
     const params = {
         id: id,
@@ -17,22 +54,12 @@ function getDetail(id) {
             const res = JSON.parse(xhr.responseText);
             console.log(res);
             // console.log(xhr.response);
-
-            // useSwiper(res);
-
+            createSwiperElem(res);
+            swiperSetting();
         } else {
             console.error('Error', xhr.status, xhr.statusText);
         }
     }
-}
-
-function getId() {
-    let id = parseId(window.location.search);
-    console.log(window.location.search);
-    console.log(id);
-
-
-    getDetail(id);
 }
 
 function parseId(str) {
@@ -49,54 +76,12 @@ function parseId(str) {
     return null;
 }
 
-
-
-
-// useSwiper
-function useSwiper(data) {
-    let detailImgs = document.querySelector('#detail-images');
-    let swiperElem = document.createElement('div');
-    swiperElem.setAttribute('class', 'swiper');
-    detailImgs.appendChild(swiperElem);
-
-    let swiperWrapper = document.createElement('div');
-    swiperWrapper.setAttribute('class', 'swiper-wrapper');
-    swiperElem.appendChild(swiperWrapper);
-
-    data.subImageList.forEach((item, idx) => {
-        let swiperSlide = document.createElement('div');
-        swiperSlide.setAttribute('class', 'swiper-slide');
-        swiperSlide.setAttribute('css', `background:url(${item})`)
-        swiperWrapper.appendChild(swiperSlide);
-
-        // swiperSlide.src = item;
-
-    })
+function getId() {
+    let id = parseId(window.location.search);
+    console.log(window.location.search);
+    getDetail(id)
 }
 
 getId();
 
 
-const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'vertical',
-    loop: true,
-
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-    },
-
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
-    // And if we need scrollbar
-    scrollbar: {
-        el: '.swiper-scrollbar',
-    },
-});
-
-swiper.nextEl
