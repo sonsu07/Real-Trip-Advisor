@@ -56,6 +56,14 @@ button:hover {
     display: block;
 }
 
+.hide {
+    display: none;
+}
+
+#hide {
+    display: none;
+}
+
 #header {
     position: fixed;
     top: 0;
@@ -342,3 +350,13 @@ button:hover {
     width: 100%;
     height: 300px;
 }
+
+
+/* libs */
+/* swiper */
+.swiper {
+    width: 600px;
+    height: 300px;
+    background-color: #003eff;
+}
+

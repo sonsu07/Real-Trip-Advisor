@@ -8,10 +8,14 @@
 * 국내 주요 도시 및 여행지 ( 우선적으로 제주도 위주 )
 
 ## Technical Stack
-* Javascript - Default
-  * jQuery UI
-    * Datepicker
-* Ajax
+### Language
+* Javascript
+
+### Library
+* Datepicker (jQuery)
+* Swiper
+
+
 
 ## Requirements
 - [ ] 스크롤 이동시 헤더 가시성 유지
