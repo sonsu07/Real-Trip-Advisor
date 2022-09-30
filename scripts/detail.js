@@ -1,5 +1,7 @@
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js'
 
+let map;
+
 function swiperSetting() {
     const swiper = new Swiper('.swiper', {
         initialSlide : 0,
@@ -54,8 +56,12 @@ function getDetail(id) {
             const res = JSON.parse(xhr.responseText);
             console.log(res);
             // console.log(xhr.response);
+
+            updateStringData(res);
             createSwiperElem(res);
             swiperSetting();
+
+
         } else {
             console.error('Error', xhr.status, xhr.statusText);
         }
@@ -80,7 +86,34 @@ function getId() {
     let id = parseId(window.location.search);
     console.log(window.location.search);
     getDetail(id)
+    initMap();
 }
+
+
+function updateStringData(data) {
+    // Location Name
+    let headerName = data.name;
+    let headerNameDetail = document.querySelector('.detail-header-name');
+    headerNameDetail.innerHTML = headerName;
+
+    // city Name
+    let cityName = data.cityName;
+    let cityNameDetail = document.querySelector('.detail-header-city-name');
+    cityNameDetail.innerHTML = cityName;
+
+    // location Detail
+    let desc = data.desc;
+    let descDetail = document.querySelector('.detail-desc-text');
+    descDetail.innerHTML = desc;
+}
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 33.3617, lng: 126.5292 },
+        zoom: 12,
+    });
+}
+
 
 getId();
 
