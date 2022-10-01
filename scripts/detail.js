@@ -1,7 +1,5 @@
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js'
 
-let map;
-
 function swiperSetting() {
     const swiper = new Swiper('.swiper', {
         initialSlide : 0,
@@ -61,6 +59,8 @@ function getDetail(id) {
             createSwiperElem(res);
             swiperSetting();
 
+            initMap(res.position.x, res.position.y);
+
 
         } else {
             console.error('Error', xhr.status, xhr.statusText);
@@ -86,7 +86,6 @@ function getId() {
     let id = parseId(window.location.search);
     console.log(window.location.search);
     getDetail(id)
-    initMap();
 }
 
 
@@ -107,14 +106,30 @@ function updateStringData(data) {
     descDetail.innerHTML = desc;
 }
 
-function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 33.3617, lng: 126.5292 },
+function initMap(lat, lng) {
+
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+        center: {
+            lat: lat, lng: lng
+        },
         zoom: 12,
     });
+    initMarker(map, lat, lng)
 }
 
+function initMarker(map, lat, lng) {
+    // marker
+    const marker = new google.maps.Marker({
+        position: {
+            lat: lat,
+            lng: lng,
+        },
+        map: map,
+    })
+}
 
+// window.initMap = initMap;
 getId();
 
 
