@@ -1,3 +1,5 @@
+import {getCookie, setCookie, deleteCookie} from "../module/cookie.js";
+
 function swiperSetting() {
     const swiper = new Swiper('.swiper', {
         initialSlide : 0,
@@ -84,7 +86,6 @@ function getId() {
     getDetail(id)
 }
 
-
 function updateStringData(data) {
     // Location Name
     let headerName = data.name;
@@ -122,15 +123,14 @@ function initMap(lat, lng) {
 }
 
 function getCookiesData(data) {
-    // 버튼 클릭시
-    // MYTRIPTS 쿠키 데이터를 뽑아와서 변수에 저장.
-
     let registerBtn = document.querySelector('.btn-register');
     registerBtn.addEventListener('click', function () {
         let myTrips = Cookies.get('MYTRIPS');
+        myTrips = JSON.stringify(myTrips);
         console.log(myTrips);
-        if (myTrips) myTrips = JSON.parse(myTrips);
-        if (!myTrips) myTrips = [];
+        if (!myTrips) {
+            myTrips = [];
+        }
 
         myTrips.push({
             id: data.id,
@@ -138,19 +138,14 @@ function getCookiesData(data) {
             cityName: data.cityName,
             x: data.position.x,
             y: data.position.y,
-        });
+        })
 
         Cookies.set('MYTRIPS', myTrips);
-
-        alert('여행지가 등록되었습니다');
-
         console.log(Cookies.get('MYTRIPS'));
+
+        alert('여행지가 등록되었습니다!');
     })
-
 }
-
-
-
 
 getId();
 
