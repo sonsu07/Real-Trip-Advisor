@@ -125,13 +125,34 @@ function initMap(lat, lng) {
 function getCookiesData(data) {
     let registerBtn = document.querySelector('.btn-register');
     registerBtn.addEventListener('click', function () {
-        let myTrips = Cookies.get('MYTRIPS');
-        myTrips = JSON.stringify(myTrips);
-        console.log(myTrips);
-        if (!myTrips) {
-            myTrips = [];
-        }
 
+        /** 세션 사용 */
+        // let myTrips = JSON.parse(localStorage.getItem('MYTRIPS'));
+        // console.log(myTrips);
+        // if (myTrips === null) {
+        //     myTrips = [];
+        // }
+        // myTrips.push({
+        //         id: data.id,
+        //         name: data.name,
+        //         cityName: data.cityName,
+        //         x: data.position.x,
+        //         y: data.position.y,
+        // })
+        // //
+        // localStorage.setItem('MYTRIPS', JSON.stringify(myTrips));
+        // console.log(localStorage.getItem('MYTRIPS'));
+
+
+        /** 쿠키 사용 */
+        let myTrips = getCookie('MYTRIPS');
+        console.log(myTrips);
+        if (myTrips === undefined) {
+            myTrips = [];
+        } else {
+            myTrips = JSON.parse(myTrips);
+        }
+        console.log(myTrips);
         myTrips.push({
             id: data.id,
             name: data.name,
@@ -140,10 +161,11 @@ function getCookiesData(data) {
             y: data.position.y,
         })
 
-        Cookies.set('MYTRIPS', myTrips);
-        console.log(Cookies.get('MYTRIPS'));
+        setCookie('MYTRIPS', JSON.stringify(myTrips));
+        console.log(document.cookie);
 
-        alert('여행지가 등록되었습니다!');
+        console.log(JSON.parse(getCookie('MYTRIPS')));
+
     })
 }
 
