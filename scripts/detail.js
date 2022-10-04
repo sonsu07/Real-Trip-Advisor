@@ -1,3 +1,5 @@
+import {getCookie, setCookie, deleteCookie} from "../module/cookie.js";
+
 function swiperSetting() {
     const swiper = new Swiper('.swiper', {
         initialSlide : 0,
@@ -84,7 +86,6 @@ function getId() {
     getDetail(id)
 }
 
-
 function updateStringData(data) {
     // Location Name
     let headerName = data.name;
@@ -122,35 +123,57 @@ function initMap(lat, lng) {
 }
 
 function getCookiesData(data) {
-    // 버튼 클릭시
-    // MYTRIPTS 쿠키 데이터를 뽑아와서 변수에 저장.
-
     let registerBtn = document.querySelector('.btn-register');
     registerBtn.addEventListener('click', function () {
-        let myTrips = Cookies.get('MYTRIPS');
-        console.log(myTrips);
-        if (myTrips) myTrips = JSON.parse(myTrips);
-        if (!myTrips) myTrips = [];
 
+        /** 세션 사용 */
+        // let myTrips = JSON.parse(localStorage.getItem('MYTRIPS'));
+        // console.log(myTrips);
+        // if (myTrips === null) {
+        //     myTrips = [];
+        // }
+        // myTrips.push({
+        //         id: data.id,
+        //         name: data.name,
+        //         cityName: data.cityName,
+        //         x: data.position.x,
+        //         y: data.position.y,
+        // })
+        // //
+        // localStorage.setItem('MYTRIPS', JSON.stringify(myTrips));
+        // console.log(localStorage.getItem('MYTRIPS'));
+
+
+        /** 쿠키 사용 */
+        let myTrips = getCookie('MYTRIPS');
+        console.log(myTrips);
+        if (myTrips === undefined) {
+            myTrips = [];
+        } else {
+            myTrips = JSON.parse(myTrips);
+        }
+        console.log(myTrips);
         myTrips.push({
             id: data.id,
             name: data.name,
             cityName: data.cityName,
             x: data.position.x,
             y: data.position.y,
-        });
+        })
+
 
         Cookies.set('MYTRIPS', myTrips);
-=
+
         alert('여행지가 등록되었습니다');
 
-        console.log(Cookies.get('MYTRIPS'));
+        setCookie('MYTRIPS', JSON.stringify(myTrips));
+        console.log(document.cookie);
+
+        console.log(JSON.parse(getCookie('MYTRIPS')));
+
+
     })
-
 }
-
-
-
 
 getId();
 
