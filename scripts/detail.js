@@ -163,9 +163,7 @@ function getCookiesData(data) {
 
         setCookie('MYTRIPS', JSON.stringify(myTrips));
         console.log(document.cookie);
-
         console.log(JSON.parse(getCookie('MYTRIPS')));
-
     })
 }
 
