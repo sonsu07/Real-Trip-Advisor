@@ -141,7 +141,7 @@ function getCookiesData(data) {
         });
 
         Cookies.set('MYTRIPS', myTrips);
-
+=
         alert('여행지가 등록되었습니다');
 
         console.log(Cookies.get('MYTRIPS'));
