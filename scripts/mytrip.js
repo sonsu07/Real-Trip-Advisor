@@ -10,12 +10,12 @@ function initMap() {
 }
 
 function getData() {
-    let myTrips = getCookie('MYTRIPS');
+    let myTrips = getCookie('MYTRIPS'); // 내 여행지 목록 쿠키
     console.log(myTrips);
     if (myTrips === undefined) {
         myTrips = [];
     } else {
-        myTrips = JSON.parse(myTrips);
+        myTrips = JSON.parse(myTrips); // 내 여행지 목록 객체화 (정확히는 배열화되고 객체를 요소로 가진 상태 )
     }
 
     initMap(myTrips.x, myTrips.y);
@@ -69,7 +69,7 @@ function generateMyTripList(myTrips, data, markerLabel) {
         markers[data.id].setMap(null); // 마커 제거
         markers[data.id] = null; // 저장해둔 마커 객체 데이터 제거
 
-        let newList = removeFromList(myTrips, data);
+        let newList = removeFromList(myTrips, data); // 삭제한 데이터를 추가한 내 여행지 목록 객체
         // console.log(newList);
         setCookie('MYTRIPS', JSON.stringify(newList));
     })
@@ -78,6 +78,9 @@ function generateMyTripList(myTrips, data, markerLabel) {
 }
 
 function removeFromList(myTrips, data) {
+    // myTrips === 객체를 요소로 갖는, 배열화된 내 여행지 목록
+    // data === 내 여행지 목록의 개별 객체 요소
+
     let index = -1;
 
     for (let i = 0; i < myTrips.length; i++) {
