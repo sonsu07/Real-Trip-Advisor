@@ -126,7 +126,7 @@ function getCookiesData(data) {
     let registerBtn = document.querySelector('.btn-register');
     registerBtn.addEventListener('click', function () {
 
-        /** 세션 사용 */
+        /** 로컬스토리지 사용 */
         // let myTrips = JSON.parse(localStorage.getItem('MYTRIPS'));
         // console.log(myTrips);
         // if (myTrips === null) {
