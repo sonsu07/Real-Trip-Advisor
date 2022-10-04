@@ -47,16 +47,17 @@ function search(from, to) {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const res = JSON.parse(xhr.responseText);
             console.log(res);
-
-            let listPanel = document.querySelector('#list-panel');
-            res.forEach(data => {
-                let item = createListItem(data);
-                // listPanel.appendChild(item);
-                listPanel.append(item);
-            })
-            const listBg = document.querySelector('#list-bg');
-            listBg.style.display = 'block';
-            // $('#list-bg').show(); // .show()는 display 속성을 block로 바꿔준다.
+            // console.log(document.querySelectorAll('.list-item').length);
+            if (document.querySelectorAll('.list-item').length <= 1) {
+                let listPanel = document.querySelector('#list-panel');
+                res.forEach(data => {
+                    let item = createListItem(data);
+                    // listPanel.appendChild(item);
+                    listPanel.append(item);
+                })
+                const listBg = document.querySelector('#list-bg');
+                listBg.style.display = 'block';
+            }
         } else {
             console.error('Error', xhr.status, xhr.statusText);
         }
