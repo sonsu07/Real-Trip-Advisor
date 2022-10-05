@@ -31,10 +31,10 @@ function getData() {
 
         let myTripItem = document.querySelectorAll('.mytrip-item')[idx];
         myTripItem.addEventListener('click', function (e) {
+            // e.preventDefault();
+
             console.log(`${idx}번 요소 클릭함`);
-
             window.location.href = `http://localhost:63342/real-trip-advisor/detail.html?id=${data.id}` // 오리진 상태에 따라서 바꿔주자.
-
         })
 
         let pos = {
@@ -61,7 +61,7 @@ function getData() {
 function generateMyTripList(myTrips, data, markerLabel) {
     const template = document.querySelector('#mytrip-item-template').cloneNode(true);
     template.removeAttribute('id');
-    console.log(data);
+    // console.log(data);
 
     let itemName = template.querySelector('.item-name');
     itemName.innerHTML = `${markerLabel}. ${data.name}`;
@@ -71,7 +71,8 @@ function generateMyTripList(myTrips, data, markerLabel) {
 
     let itemRemove = template.querySelector('.item-remove');
     itemRemove.addEventListener('click', function (e) {
-        e.preventDefault();
+        // e.preventDefault();
+        e.stopPropagation(); // 이벤트 캡쳐링 방지
 
         this.closest('.mytrip-item').remove(); // 목록 제거
         markers[data.id].setMap(null); // 마커 제거
@@ -80,6 +81,7 @@ function generateMyTripList(myTrips, data, markerLabel) {
         let newList = removeFromList(myTrips, data); // 삭제한 데이터를 추가한 내 여행지 목록 객체
         // console.log(newList);
         setCookie('MYTRIPS', JSON.stringify(newList));
+        console.log(myTrips);
     })
 
     return template

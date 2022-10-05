@@ -52,7 +52,7 @@ function getDetail(id) {
     xhr.onload = (e) => {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const res = JSON.parse(xhr.response);
-            console.log(res);
+            // console.log(res);
 
             updateStringData(res);
             createSwiperElem(res);
@@ -82,7 +82,7 @@ function parseId(str) {
 
 function getId() {
     let id = parseId(window.location.search);
-    console.log(window.location.search);
+    // console.log(window.location.search);
     getDetail(id)
 }
 
@@ -126,6 +126,14 @@ function getCookiesData(data) {
     let registerBtn = document.querySelector('.btn-register');
     registerBtn.addEventListener('click', function () {
 
+        let objData = {
+            id: data.id,
+            name: data.name,
+            cityName: data.cityName,
+            x: data.position.x,
+            y: data.position.y,
+        }
+
         /** 로컬스토리지 사용 */
         // let myTrips = JSON.parse(localStorage.getItem('MYTRIPS'));
         // console.log(myTrips);
@@ -146,29 +154,23 @@ function getCookiesData(data) {
 
         /** 쿠키 사용 */
         let myTrips = getCookie('MYTRIPS');
-        console.log(myTrips);
+        // console.log(myTrips);
         if (myTrips === undefined) {
             myTrips = [];
         } else {
             myTrips = JSON.parse(myTrips);
         }
-        console.log(myTrips);
-        myTrips.push({
-            id: data.id,
-            name: data.name,
-            cityName: data.cityName,
-            x: data.position.x,
-            y: data.position.y,
-        })
 
-
-        Cookies.set('MYTRIPS', myTrips);
-
-        alert('여행지가 등록되었습니다');
+        if ( JSON.stringify(myTrips).includes(JSON.stringify(objData)) ) {
+            alert('이미 등록된 여행지입니다!');
+        } else {
+            myTrips.push(objData) // 요소 삽입
+            alert('여행지가 추가되었습니다!');
+            console.log(myTrips);
+        }
 
         setCookie('MYTRIPS', JSON.stringify(myTrips));
-        console.log(document.cookie);
-        console.log(JSON.parse(getCookie('MYTRIPS')));
+        console.log(myTrips);
 
     })
 }
