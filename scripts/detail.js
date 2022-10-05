@@ -176,3 +176,4 @@ function getCookiesData(data) {
 getId();
 
 
+// console.log(window.location);

@@ -29,6 +29,14 @@ function getData() {
         let item = generateMyTripList(myTrips, data, markerLabel);
         myTripList.append(item);
 
+        let myTripItem = document.querySelectorAll('.mytrip-item')[idx];
+        myTripItem.addEventListener('click', function (e) {
+            console.log(`${idx}번 요소 클릭함`);
+
+            window.location.href = `http://localhost:63342/real-trip-advisor/detail.html?id=${data.id}` // 오리진 상태에 따라서 바꿔주자.
+
+        })
+
         let pos = {
             lat: data.x,
             lng: data.y
