@@ -1,21 +1,15 @@
-const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'vertical',
-    loop: true,
+let person = {
+    name: 'Lee',
+    age: 28
+}
 
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-    },
+let swallowCopy = person; // 얕은 복사
+let deepCopy = {...person}; // 깊은 복사
 
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
+people = [];
+people.push(swallowCopy);
+people.push(deepCopy);
+console.log(people); // [ { name: 'Lee', age: 28 }, { name: 'Lee', age: 28 } ]
+console.log(people[0] === people[1]); // false
 
-    // And if we need scrollbar
-    scrollbar: {
-        el: '.swiper-scrollbar',
-    },
-});
+console.log(JSON.stringify(people[0]) === JSON.stringify(people[1])); // true
