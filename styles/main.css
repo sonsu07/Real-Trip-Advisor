@@ -569,7 +569,8 @@ button:hover {
     /*display: none;*/
     font-size: 13px;
     color: red;
-    margin-top: -5px;
+    margin-top: -13px;
+    padding: 5px;
 }
 
 /* 로그인 */
