@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>리얼트립 어드바이저</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
-<body>
+<body class="gray-bg">
+<div id="container">
+    <div id="header" class="inverted">
+        <div>
+            <a href="index.html"><span></span></a>
+            <div class="menu-items right">
+                <a href="myTrip.html">마이트립</a>
+                <img src="images/line_maintop_gray.png" />
+                <a href="register.html">회원가입</a>
+                <img src="images/line_maintop_gray.png" />
+                <a href="javascript:showLogin()">로그인</a>
+            </div>
+        </div>
+    </div>
+    <div id="body">
+        <div class="form-box md-box">
+            <div class="inner">
+                <div class="title">
+                    <span class="blue">마이트립</span> <span class="black">어드바이저</span>
+                </div>
+                <span class="sub-title">필수 정보를 입력하세요.</span>
+                <form id="form-register">
+                    <input id="inp-femail" type="email" name="email" placeholder="이메일 주소" autofocus />
+                    <div class="txt-warning"></div>
 
+                    <button type="submit" id="btn-submit">가입하기</button>
+                    <button type="submit" id="btn-back">돌아가기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="scripts/register.js"></script>
 </body>
 </html>
