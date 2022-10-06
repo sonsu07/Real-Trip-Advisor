@@ -11,8 +11,6 @@
         <div>
             <a href="index.html"><span></span></a>
             <div class="menu-items right">
-                <a href="myTrip.html">마이트립</a>
-                <img src="images/line_maintop_gray.png" />
                 <a href="register.html">회원가입</a>
                 <img src="images/line_maintop_gray.png" />
                 <a href="javascript:showLogin()">로그인</a>
@@ -27,14 +25,50 @@
                 </div>
                 <span class="sub-title">필수 정보를 입력하세요.</span>
                 <form id="form-register">
-                    <input id="inp-femail" type="email" name="email" placeholder="이메일 주소" autofocus />
+                    <input id="inp-email" type="email" name="email" placeholder="이메일 주소" autofocus />
+                    <div class="txt-warning"></div>
+                    <input id="inp-password" type="password" name="password" placeholder="비밀번호" />
+                    <div class="txt-warning"></div>
+                    <input id="inp-confirm" type="password" name="confirm" placeholder="비밀번호 확인" />
                     <div class="txt-warning"></div>
 
-                    <button type="submit" id="btn-submit">가입하기</button>
-                    <button type="submit" id="btn-back">돌아가기</button>
+                    <div class="div-gender">
+                        <input id="inp-male" type="radio" name="gender" value="m" /> <label for="inp-male">남</label>
+                        <input id="inp-female" type="radio" name="gender" value="f" /> <label for="inp-female">여</label>
+                        <span class="txt-warning right"></span>
+                    </div>
+
+                    <div class="div-birth">
+                        <select id="sel-birth">
+                            <option value="">출생년도 선택</option>
+                        </select>
+                        <span class="txt-warning right"></span>
+                    </div>
+
+                    <div class="div-accept">
+                        <input id="inp-accept" type="checkbox" value="accept" /> <label for="inp-accept">회원가입을 위한 개인정보 제공에 동의합니다.</label>
+                        <span class="txt-warning right"></span>
+                    </div>
+
+                    <button id="btn-submit" type="submit">가입하기</button>
+                    <button id="btn-back" type="button">돌아가기</button>
                 </form>
             </div>
         </div>
+    </div>
+</div>
+
+<div id="login" class="black-bg hide">
+    <div class="login-box sm-box">
+        <div>
+            <span class="blue">마이트립</span> <span class="black">어드바이저</span>
+        </div>
+        <span>로그인 정보를 입력하세요.</span>
+        <form>
+            <input type="text" name="email" placeholder="이메일 주소" />
+            <input type="password" name="password" placeholder="비밀번호" />
+            <button type="submit">로그인</button>
+        </form>
     </div>
 </div>
 
