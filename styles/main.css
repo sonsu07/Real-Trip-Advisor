@@ -22,12 +22,16 @@ body {
     min-height: 100%;
 }
 
-button:hover {
+button:hover, #inp-male, #inp-female {
     cursor: pointer; /* 손가락 모양 ( 클릭 가능한 버튼 ) */
 }
 
 .blue {
     color: #4299E1;
+}
+
+.background-blue {
+    background-color: #4299E1;
 }
 
 .black {
@@ -94,10 +98,10 @@ button:hover {
 
 .md-box {
     width: 610px;
-    height: 840px;
+    height: 1000px;
     background-color: #fff;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
-    margin: 150px auto 150px;
+    margin: 70px auto 150px;
 }
 
 .form-box .title {
@@ -105,20 +109,26 @@ button:hover {
     text-align: center;
 }
 
+.inner > .title {
+    margin-bottom: 20px;
+}
+
+
 .form-box .sub-title {
     display: block;
     margin-top: 8px;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
     font-size: 15px;
     color: #bbb;
     text-align: center;
 }
 
-.form-box input[type="text"],
-.form-box input[type="id"],
-.form-box input[type="password"],
+.form-box.md-box input[type="text"],
+.form-box.md-box input[type="id"],
+.form-box.md-box input[type="password"],
 .form-box.md-box input[type="email"],
-.form-box.md-box input[type="user-name"] {
+.form-box.md-box input[type="user-name"],
+.terms {
     display: inline-block;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -126,6 +136,7 @@ button:hover {
     font-size: 17px;
     margin-bottom: 12px;
     padding: 22px;
+    border-radius: 5px;
 }
 
 .form-box button {
@@ -137,58 +148,76 @@ button:hover {
     margin-top: 10px;
 }
 
-.form-box.sm-box input[name="id"],
-.form-box.sm-box input[name="password"],
-.form-box.sm-box input[name="confirm"],
-.form-box.md-box input[name="email"],
-.form-box.md-box input[name="user-name"],
-
-.form-box.sm-box button {
-    width: 370px;
-    height: 55px;
-}
+/*.form-box.sm-box input[name="id"],*/
+/*.form-box.sm-box input[name="password"],*/
+/*.form-box.sm-box input[name="confirm"],*/
+/*.form-box.md-box input[name="email"],*/
+/*.form-box.md-box input[name="user-name"],*/
+/*.form-box.sm-box button {*/
+/*    width: 370px;*/
+/*    height: 55px;*/
+/*}*/
 
 .form-box.md-box input[name="id"],
 .form-box.md-box input[name="password"],
 .form-box.md-box input[name="confirm"],
 .form-box.md-box input[name="email"],
 .form-box.md-box input[name="user-name"],
-.form-box.md-box button {
-    width: 470px;
+.form-box.md-box button,
+.selective-input-box {
+    /*width: 470px;*/
+    width: 100%;
     height: 55px;
+    /*background-color: #5f3f3f;*/
 }
 
-.selective-input {
-    padding-top: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-.selective-input > span {
+#form-register > span {
+    display: inline-block;
     font-size: 13px;
     color: darkgray;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    padding-left: 10px;
 }
 
-input[name="year-year"] {
-    width: 230px;
-    height: 55px;
+.selective-input-box {
     display: flex;
-    margin-right: 5px;
+}
+
+#inp-year-birth {
+    /*display: inline-block;*/
+    width: 60%;
+    height: 55px;
 }
 
 #gender-box {
-    width: 230px;
-    height: 55px;
-    margin-left: 5px;
-    border: 1px solid black;
     display: flex;
-    /*background-color: blue;*/
+    width: 38%;
+    margin-left: 2%;
+    height: 55px;
+    border: 1px solid #ccc;
+    color: #505050;
+    border-radius: 5px;
 }
 
+#inp-female, #inp-male {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0;
+}
 
-/*.form-box.md-box input[type="user-name"],*/
+#inp-female {
+    border-left: 1px solid #ccc;
+    /*background-color: #4299E0;*/
+}
 
+#year-warning {
+    position: relative;
+    top: 10px;
+}
 
 .show {
     display: block;
@@ -224,8 +253,6 @@ input[name="year-year"] {
     width: 154px;
     height: 20px;
     background-image: url("../images/image_logo_white.png");
-    /*position: relative;*/
-    /*left: 30px;*/
 }
 
 #header.inverted span {
@@ -270,14 +297,14 @@ input[name="year-year"] {
 
 #body {
     width: 100%;
-    height: 180%;
-    min-height: 1000px;
+    height: 300%;
+    min-height: 1300px;
     background-image: url('../images/bg_main.png');
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #fff;
-    /*overflow: auto;*/
+    overflow: auto;
 }
 
 #title-text {
@@ -586,17 +613,16 @@ input[name="year-year"] {
 
 
 /* 회원가입 */
-
-.form-box .inner { padding: 60px 70px; }
+.form-box .inner { padding: 20px 70px;}
 #form-register { font-size: 15px; }
 /*#inp-password { margin-top: 0; }*/
 .div-gender { margin-top: 12px; }
 .div-gender .txt-warning { margin-top: 2px; }
-#inp-female { margin-left: 20px; }
+/*#inp-female { margin-left: 20px; }*/
 .div-birth { margin-top: 17px; }
 .div-birth .txt-warning { margin-top: 10px; }
 #inp-accept { margin-top: 30px; }
-#btn-submit { margin-top: 50px; }
+#btn-submit { border-radius: 5px; box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);}
 .overflow { height: 200px; }
 #btn-back { background-color: #A4AAB2; }
 .ui-selectmenu-text { color: #505050; font-weight: 400; }
@@ -612,6 +638,91 @@ input[name="year-year"] {
     padding: 5px;
 }
 
+
+/* 가입 약관 */
+.terms {
+    width: 470px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.terms-title {
+    width: 100%;
+    font-size: 20px;
+    letter-spacing: -2px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #505050;
+}
+
+.terms-sub {
+    padding-top: 10px;
+    border-top: solid 1px #ccc;
+}
+
+.terms-first, .terms-second,
+.terms-third, .terms-fourth {
+    margin-top: 3px;
+}
+
+.form-register > label {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.inp-terms {
+    cursor: pointer;
+}
+
+#form-register a {
+    /*position: relative;*/
+    /*bottom: -3px;*/
+    text-decoration: none;
+    color: #505050;
+    font-size: 10px;
+    rotate: 0.5deg;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+    width: 1.5em;
+    height: 1.5em;
+    border: solid 1px #ccc;
+    appearance: none;
+    border-radius: 50%;
+    transition: background 1s;
+    position: relative;
+    bottom: -4px;
+    background: white url("../images/check-svgrepo-com.svg") no-repeat center center;
+    opacity: 0.3;
+}
+
+input[type="checkbox"]:checked {
+    background: #4299E1 url("../images/check-svgrepo-com.svg") no-repeat center center;
+    opacity: 0.7;
+    border: none;
+}
+
+
+/*.form-register > label {*/
+/*    display: flex;*/
+/*    font-size: 1em;*/
+/*    font-weight: 600;*/
+/*    margin-bottom: 1em;*/
+/*}*/
+/*input[type="checkbox"] {*/
+/*    margin-right: 7px;*/
+/*    width: 1.5em;*/
+/*    height: 1.5em;*/
+/*    !*background: white no-repeat center center;*!*/
+/*    border: 1px solid #ccc;*/
+/*    cursor: pointer;*/
+/*    outline: none;*/
+/*    appearance: none;*/
+/*    border-radius: 50%;*/
+/*    background-image: url('../images/check-mark-svgrepo-com.svg');*/
+/*}*/
 
 
 

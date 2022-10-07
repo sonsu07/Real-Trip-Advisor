@@ -92,6 +92,7 @@ function checkEmail() {
     })
 }
 
+/** 이름 검증 */
 function checkName() {
     let inputName = document.querySelector('#inp-user-name');
     inputName.addEventListener('input', function (e) {
@@ -106,18 +107,63 @@ function checkName() {
         if (nameValue === '') {
             nameWarning.innerHTML = '이름을 입력해주세요';
         } else if (checkName === false) {
-            nameWarning.innerHTML = `한글 또는 영문으로 입력해주세요. <br/> 2글자 이상의 이름을 정확히 입력해주세요`
+            nameWarning.innerHTML = `2글자 이상의 한글 또는 영문으로 입력해주세요.`
         } else {
             nameWarning.innerHTML = '';
         }
     })
+}
 
+/** 출생년도 체크 */
+function yearCheck() {
+    let inputYear = document.querySelector('#inp-year-birth');
+    inputYear.addEventListener('input', function (e) {
+        e.preventDefault();
+
+        let yearRule = /^\d{4}$/; // 숫자 4자리까지
+        let yearValue = inputYear.value;
+        let checkYear = yearRule.test(yearValue);
+        console.log(checkYear);
+        let yearWarning = document.querySelector('#year-warning');
+        // console.log(yearValue);
+
+        if (checkYear === false) {
+            yearWarning.innerHTML = '정확히 입력해주세요.';
+        } else {
+            yearWarning.innerHTML = '';
+        }
+    })
+}
+
+/** 성별 체크란 */
+function genderCheck() {
+    // check male
+    let male = document.querySelector('#inp-male');
+    male.addEventListener('click', function (e) {
+        if (male.className === 'background-blue') {
+            male.classList.remove('background-blue')
+        } else {
+            male.classList.add('background-blue');
+        }
+    })
+
+    // check female
+    let female = document.querySelector('#inp-female');
+    female.addEventListener('click', function (e) {
+        if (female.className === 'background-blue') {
+            female.classList.remove('background-blue')
+        } else {
+            female.classList.add('background-blue');
+        }
+    })
 }
 
 checkId();
 checkEmail();
 checkPW();
 checkName();
+genderCheck();
+yearCheck();
 
 // 임시로 제출기능 막기
 document.querySelector('#form-register').addEventListener('submit', function (e) {

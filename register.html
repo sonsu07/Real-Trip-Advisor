@@ -21,9 +21,9 @@
         <div class="form-box md-box">
             <div class="inner">
                 <div class="title">
-                    <span class="blue">마이트립</span> <span class="black">어드바이저</span>
+<!--                    <span class="blue">마이트립</span> <span class="black">어드바이저</span>-->
+                    <span>회원 가입</span>
                 </div>
-                <span class="sub-title">정보를 입력해 주세요</span>
                 <form id="form-register">
                     <input id="inp-id" type="text" name="id" placeholder="아이디" autofocus />
                     <div class="txt-warning" id="id-warning"></div>
@@ -35,17 +35,55 @@
                     <div class="txt-warning" id="email-warning"></div>
                     <input id="inp-user-name" type="text" name="user-name" placeholder="이름" />
                     <div class="txt-warning" id="user-name-warning"></div>
-                    <div class="selective-input">
-                        <span>선택 입력</span>
+                    <span>선택 입력</span>
+                    <div class="selective-input-box">
                         <input id="inp-year-birth" type="text" name="year-year" placeholder="출생년도" />
                         <div id="gender-box">
                             <div id="inp-male">남</div>
                             <div id="inp-female">여</div>
                         </div>
                     </div>
+                    <div class="txt-warning" id="year-warning"></div>
 
+                    <div class="terms">
+                        <div class="terms-title">
+                            <label htmlFor="check-all" class="inp-terms">
+                                <input type="checkbox" id="check-all" name="check"/>
+                                <span>선택 포함 전체 약관 동의</span>
+                            </label>
+                        </div>
+                        <div class="terms-sub">
+                            <div class="terms-first">
+                                <label htmlFor="check-first" class="inp-terms">
+                                    <input type="checkbox" id="check-first" name="check"/>
+                                    <span>이용약관 동의(필수)</span>
+                                </label>
+                                <a href="">약관 보기 ></a>
+                            </div>
+                            <div class="terms-second">
+                                <label htmlFor="check-second" class="inp-terms">
+                                    <input type="checkbox" id="check-second" name="check"/>
+                                    <span>이벤트, 혜택 알림 수신 동의(선택)</span>
+                                </label>
+                            </div>
+                            <div class="terms-third">
+                                <label htmlFor="check-third" class="inp-terms">
+                                    <input type="checkbox" id="check-third" name="check"/>
+                                    <span>성년, 생년 정보 제공 동의(선택)</span>
+                                </label>
+                                <a href="">내용 확인 ></a>
+                            </div>
+                            <div class="terms-fourth">
+                                <label htmlFor="check-fourth" class="inp-terms">
+                                    <input type="checkbox" id="check-fourth" name="check"/>
+                                    <span>개인 정보 수집 및 이용 동의(필수)</span>
+                                </label>
+                                <a href="">내용 확인 ></a>
+                            </div>
+                        </div>
+                    </div>
                     <button id="btn-submit" type="submit">회원가입 완료</button>
-                    <button id="btn-back" type="button">돌아가기</button>
+<!--                    <button id="btn-back" type="button">돌아가기</button>-->
                 </form>
             </div>
         </div>
