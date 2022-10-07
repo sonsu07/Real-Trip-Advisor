@@ -94,7 +94,7 @@ button:hover {
 
 .md-box {
     width: 610px;
-    height: 740px;
+    height: 840px;
     background-color: #fff;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
     margin: 150px auto 150px;
@@ -115,8 +115,10 @@ button:hover {
 }
 
 .form-box input[type="text"],
-.form-box input[type="email"],
-.form-box input[type="password"] {
+.form-box input[type="id"],
+.form-box input[type="password"],
+.form-box.md-box input[type="email"],
+.form-box.md-box input[type="user-name"] {
     display: inline-block;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -135,21 +137,58 @@ button:hover {
     margin-top: 10px;
 }
 
-.form-box.sm-box input[type="text"],
-.form-box.sm-box input[type="email"],
-.form-box.sm-box input[type="password"],
+.form-box.sm-box input[name="id"],
+.form-box.sm-box input[name="password"],
+.form-box.sm-box input[name="confirm"],
+.form-box.md-box input[name="email"],
+.form-box.md-box input[name="user-name"],
+
 .form-box.sm-box button {
     width: 370px;
     height: 55px;
 }
 
-.form-box.md-box input[type="text"],
-.form-box.md-box input[type="email"],
-.form-box.md-box input[type="password"],
+.form-box.md-box input[name="id"],
+.form-box.md-box input[name="password"],
+.form-box.md-box input[name="confirm"],
+.form-box.md-box input[name="email"],
+.form-box.md-box input[name="user-name"],
 .form-box.md-box button {
     width: 470px;
     height: 55px;
 }
+
+.selective-input {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.selective-input > span {
+    font-size: 13px;
+    color: darkgray;
+    margin-bottom: 10px;
+}
+
+input[name="year-year"] {
+    width: 230px;
+    height: 55px;
+    display: flex;
+    margin-right: 5px;
+}
+
+#gender-box {
+    width: 230px;
+    height: 55px;
+    margin-left: 5px;
+    border: 1px solid black;
+    display: flex;
+    /*background-color: blue;*/
+}
+
+
+/*.form-box.md-box input[type="user-name"],*/
+
 
 .show {
     display: block;
@@ -231,14 +270,14 @@ button:hover {
 
 #body {
     width: 100%;
-    height: 100%;
+    height: 180%;
     min-height: 1000px;
     background-image: url('../images/bg_main.png');
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #fff;
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
 #title-text {
@@ -455,7 +494,7 @@ button:hover {
 
 .detail-container #map {
     width: 100%;
-    height: 300px;
+    height: 400px;
 }
 
 /* 마이 트립 */
@@ -572,6 +611,10 @@ button:hover {
     margin-top: -13px;
     padding: 5px;
 }
+
+
+
+
 
 /* 로그인 */
 

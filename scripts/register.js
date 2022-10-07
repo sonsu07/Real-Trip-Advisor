@@ -1,25 +1,25 @@
-/** 이메일 검증 */
-function checkId() {
-    let inputEmail = document.querySelector('#inp-email');
-    inputEmail.addEventListener('input', function (e) {
+/** 아이디 검증 */
+function  checkId() {
+    let inputId = document.querySelector('#inp-id');
+    inputId.addEventListener('input', function (e) {
         e.preventDefault();
 
-        let emailRule= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;// 이메일 정규식
-        let emailValue = inputEmail.value;
-        let checkEmail = emailRule.test(emailValue);
+        // 영문자로 시작하는 영문자 또는 숫자 6~20자
+        let idRule = /^[a-z]+[a-z0-9]{5,19}$/g;
+        let idValue = inputId.value;
+        let checkId = idRule.test(idValue);
 
-        let emailWarning = document.querySelector('#email-warning');
+        let idWarning = document.querySelector('#id-warning');
 
-        if (emailValue === '') {
-            emailWarning.innerHTML = '이메일을 입력해주세요.';
-        } else if (checkEmail === false) {
-            emailWarning.innerHTML = '이메일 형식으로 적어주세요.';
+        if (idValue === '') {
+            idWarning.innerHTML = '아이디를 입력해 주세요.';
+        } else if (checkId === false) {
+            idWarning.innerHTML = '다른 아이디를 사용해 주세요';
         } else {
-            emailWarning.innerHTML = '';
+            idWarning.innerHTML = '';
         }
     })
 }
-
 
 /** 비밀번호 검증 */
 function checkPW() {
@@ -70,10 +70,54 @@ function checkPW() {
     })
 }
 
+/** 이메일 검증 */
+function checkEmail() {
+    let inputEmail = document.querySelector('#inp-email');
+    inputEmail.addEventListener('input', function (e) {
+        e.preventDefault();
 
+        let emailRule= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;// 이메일 정규식
+        let emailValue = inputEmail.value;
+        let checkEmail = emailRule.test(emailValue);
+
+        let emailWarning = document.querySelector('#email-warning');
+
+        if (emailValue === '') {
+            emailWarning.innerHTML = '이메일을 입력해주세요.';
+        } else if (checkEmail === false) {
+            emailWarning.innerHTML = '올바른 이메일 형식이 아닙니다.';
+        } else {
+            emailWarning.innerHTML = '';
+        }
+    })
+}
+
+function checkName() {
+    let inputName = document.querySelector('#inp-user-name');
+    inputName.addEventListener('input', function (e) {
+        e.preventDefault();
+
+        let nameRule =  /^[가-힣a-zA-Z]{2,}$/;
+        let nameValue = inputName.value;
+        let checkName = nameRule.test(nameValue);
+
+        let nameWarning = document.querySelector('#user-name-warning');
+
+        if (nameValue === '') {
+            nameWarning.innerHTML = '이름을 입력해주세요';
+        } else if (checkName === false) {
+            nameWarning.innerHTML = `한글 또는 영문으로 입력해주세요. <br/> 2글자 이상의 이름을 정확히 입력해주세요`
+        } else {
+            nameWarning.innerHTML = '';
+        }
+    })
+
+}
 
 checkId();
+checkEmail();
 checkPW();
+checkName();
 
 // 임시로 제출기능 막기
 document.querySelector('#form-register').addEventListener('submit', function (e) {

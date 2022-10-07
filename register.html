@@ -23,34 +23,28 @@
                 <div class="title">
                     <span class="blue">마이트립</span> <span class="black">어드바이저</span>
                 </div>
-                <span class="sub-title">필수 정보를 입력하세요.</span>
+                <span class="sub-title">정보를 입력해 주세요</span>
                 <form id="form-register">
-                    <input id="inp-email" type="email" name="email" placeholder="이메일 주소" autofocus />
-                    <div class="txt-warning" id="email-warning"></div>
+                    <input id="inp-id" type="text" name="id" placeholder="아이디" autofocus />
+                    <div class="txt-warning" id="id-warning"></div>
                     <input id="inp-password" type="password" name="password" placeholder="비밀번호" />
                     <div class="txt-warning" id="pw-warning"></div>
                     <input id="inp-confirm" type="password" name="confirm" placeholder="비밀번호 확인" />
                     <div class="txt-warning" id="pwConfirm-warning"></div>
-
-                    <div class="div-gender">
-                        <input id="inp-male" type="radio" name="gender" value="m" /> <label for="inp-male">남</label>
-                        <input id="inp-female" type="radio" name="gender" value="f" /> <label for="inp-female">여</label>
-                        <span class="txt-warning right"></span>
+                    <input id="inp-email" type="email" name="email" placeholder="이메일 주소" />
+                    <div class="txt-warning" id="email-warning"></div>
+                    <input id="inp-user-name" type="text" name="user-name" placeholder="이름" />
+                    <div class="txt-warning" id="user-name-warning"></div>
+                    <div class="selective-input">
+                        <span>선택 입력</span>
+                        <input id="inp-year-birth" type="text" name="year-year" placeholder="출생년도" />
+                        <div id="gender-box">
+                            <div id="inp-male">남</div>
+                            <div id="inp-female">여</div>
+                        </div>
                     </div>
 
-                    <div class="div-birth">
-                        <select id="sel-birth">
-                            <option value="">출생년도 선택</option>
-                        </select>
-                        <span class="txt-warning right"></span>
-                    </div>
-
-                    <div class="div-accept">
-                        <input id="inp-accept" type="checkbox" value="accept" /> <label for="inp-accept">회원가입을 위한 개인정보 제공에 동의합니다.</label>
-                        <span class="txt-warning right"></span>
-                    </div>
-
-                    <button id="btn-submit" type="submit">가입하기</button>
+                    <button id="btn-submit" type="submit">회원가입 완료</button>
                     <button id="btn-back" type="button">돌아가기</button>
                 </form>
             </div>
