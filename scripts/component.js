@@ -1,3 +1,23 @@
+class birthTerms extends HTMLElement {
+    connectedCallback() {
+        this.attachShadow({mode : 'open'});
+        this.shadowRoot.innerHTML =
+            `
+            <div class="body">
+                <div class="terms-detail-body">
+                    <div class="title">
+                        <span>${birthTermsTitle}</span>
+                    </div>
+                    <div class="sub">
+                        <span>${birthTermsContent}</span>
+                    </div>
+                </div>
+            </div>
+            <style>${birthTermsStyle}</style>
+            `
+    }
+}
+
 class termsMain extends HTMLElement {
     connectedCallback() {
         this.attachShadow({mode : 'open'});
@@ -14,6 +34,7 @@ class termsMain extends HTMLElement {
                 </div>
             </div>
             <style>${termsStyle}</style>
+            <style></style>
             `
     }
 }
@@ -40,8 +61,96 @@ class header extends HTMLElement {
     }
 }
 
-customElements.define("terms-input", termsMain);
 customElements.define('header-main', header);
+customElements.define('terms-input', termsMain);
+customElements.define('birth-input', birthTerms);
+
+let birthTermsTitle = `<h2>성별, 생년 정보제공 동의 (선택)</h2> `;
+let birthTermsContent =
+    `
+    <table>
+        <thead>
+            <tr class="tr-1">
+                <th class="th-1">
+                    <strong>개인정보 수집 이용 목적</strong>
+                </th>
+                <th class="th-2">
+                    <strong>선택 수집 항목</strong>
+                </th>
+                <th class="th-2">
+                    <strong>이용 보류 기간</strong>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tr-2">
+                <td>
+                    <strong>
+                        신규 서비스 개발 및 마케팅에의 활용. 신규 서비스 개발, 통계학적 특성, 이용 형태 등에 따른 맞춤형 서비스 제공, 광고 게재, 이벤트 참여기회 제공, 접속빈도 파악, 회원의 서비스 이용에 대한 통계
+                    </strong>
+                </td>
+                <td>생년, 성별</td>
+                <td>탈퇴시 즉시 파기</td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>자세한 내용은 개인정보 처리 방침을 참고하시기 바랍니다.</h4>
+    `
+let birthTermsStyle =
+    `
+    .th-2 {
+        width: 15%;
+    }
+    .tr-1 {
+        text-align: center;
+    }
+    .tr-2 > td {
+        padding: 10px;
+    }
+    table, table th, table td{
+        border: 1px solid #D1D5D9;
+    }
+    .body {
+        width: 100%;
+        height: 300%;
+        min-height: 900px;
+        background-image: url('../images/bg_main.png');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #fff;
+        overflow: auto;
+    }
+    .terms-detail-body {
+        width: 610px;
+        height: 550px;
+        background-color: #fff;
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+        margin: 100px auto 150px;
+        // overflow: scroll;
+    }
+    .container {
+        width: 100%;
+        margin: auto;
+    }
+    .title {
+        text-align: center;
+        padding: 30px
+    }
+    .title > span { 
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .sub {
+        font-size: 16px;
+        text-align: left;
+        padding: 30px 60px;
+    }
+    .sub > span {
+        overflow: hidden;
+    }
+    `;
+
 
 let headerStyle =
     `
