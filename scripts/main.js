@@ -64,7 +64,6 @@ function search(from, to) {
     }
 }
 
-
 // 폼 제출 기능
 function formSubmit() {
     let formSearch = document.querySelector('#form-search');
@@ -75,6 +74,26 @@ function formSubmit() {
         let to = document.querySelector('#to').value;
 
         search(from, to);
+    })
+}
+
+function indexLogin() {
+    let loginBg = document.querySelector('.bg-dark');
+
+    let loginMainBtn = document.querySelector('.login');
+    loginMainBtn.addEventListener('click', function () {
+        console.log('show');
+        loginBg.classList.remove('hide');
+    })
+
+    let loginCloseBtn = document.querySelector('.login-close-btn');
+    loginCloseBtn.addEventListener('click', function (e) {
+        loginBg.classList.add('hide');
+    })
+
+    let registerBtn = document.querySelector('.register-btn');
+    registerBtn.addEventListener('click', function (e) {
+        location.href = 'http://localhost:63342/Real-Trip-Advisor/register.html';
     })
 }
 
@@ -93,6 +112,11 @@ function createListItem(data) {
     return template1;
 }
 
+
+
 scrollEvent()
 CalendarWidget();
 formSubmit();
+indexLogin();
+
+

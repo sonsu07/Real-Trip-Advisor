@@ -1,3 +1,95 @@
+class myLogin extends HTMLElement {
+    connectedCallback() {
+        this.attachShadow({mode: "open"});
+        // language=HTML
+        this.shadowRoot.innerHTML =
+            `
+                <script>
+                    
+                </script>
+                
+                <style>
+                    .login-container p {
+                        margin: 8px 0;
+                    }
+
+                    .login-container input {
+                        padding: 10px;
+                        width: 100%;
+                        border-radius: 5px;
+                        box-sizing: border-box;
+                        border: solid 1px lightgray;
+                        
+                        margin-bottom: 10px;
+                    }
+                    
+                    .login-container > h1 {
+                        margin: auto;
+                    }
+
+                    .login-box {
+                        margin: 20px 0 auto;
+                    }
+
+                    .btn-box {
+                        margin: 30px 0 auto;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    
+                    .btn-box > button {
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        border: solid 1px lightgray;
+                        cursor: pointer;
+                    }
+
+                    .container {
+                        display: flex;
+                        flex-direction: column;
+                        /*border: solid 1px dimgray;*/
+                        border-radius: 10px;
+
+                        margin: 0 auto;
+                        padding: 20px 40px;
+                    }
+
+                    .bg-dark {
+                        width: 100%;
+                        height: 100%;
+                        position: fixed;
+                        background: rgba(0, 0, 0, 0.5);
+                        z-index: 5;
+                        padding: 30px;
+
+                        /*display : none;*/
+                        /*visibility : hidden;*/
+                        /*opacity : 0;*/
+                        transition: all 1s;
+                    }
+
+                    .bg-white {
+                        position: relative;
+                        top: 50px;
+                        width: 50%;
+                        height: 50%;
+                        max-width: 500px;
+                        margin-right: auto;
+                        margin-left: auto;
+                        background: white;
+                        border-radius: 5px;
+                        padding: 20px;
+                    }
+                    
+                    .hide {
+                        display: none;
+                    }
+                </style>
+                
+            `
+    }
+}
+
 class personalInfoTerms extends HTMLElement {
     connectedCallback() {
         this.attachShadow({mode: 'open'});
@@ -72,7 +164,6 @@ class header extends HTMLElement {
                         <img src="images/line_maintop_gray.png">
                         <a href="register.html">회원가입</a>
                         <img src="images/line_maintop_gray.png">
-                        <a href="javascript:showLogin()">로그인</a>
                     </div>
                 </div>
             </div>
@@ -86,6 +177,7 @@ customElements.define('header-main', header);
 customElements.define('terms-input', termsMain);
 customElements.define('birth-input', birthTerms);
 customElements.define('personal-input', personalInfoTerms);
+customElements.define('login-form', myLogin);
 
 let personalTermsTitle = `<h2>개인정보 수집 및 이용 동의 (필수)</h2>`
 let personalTermsContent =

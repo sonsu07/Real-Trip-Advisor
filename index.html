@@ -8,6 +8,31 @@
 </head>
 <body>
 
+<div class="bg-dark hide">
+    <div class="bg-white">
+        <form class="login-container">
+            <h1>로그인하세요</h1>
+            <div class="login-box">
+                <div class="email-box">
+                    <p>이메일</p>
+                    <input type="email" class="inp-email" placeholder="something@example.com">
+                    <div class="txt-warning" id="id-warning"></div>
+                </div>
+                <div class="pw-box">
+                    <p>비밀번호</p>
+                    <input type="password" class="inp-pw" placeholder="비밀번호">
+                    <div class="txt-warning" id="pw-warning"></div>
+                </div>
+            </div>
+            <div class="btn-box">
+                <button type="submit" class="login-btn">로그인</button>
+                <button type="button" class="register-btn">회원가입</button>
+                <button type="button" class="login-close-btn">닫기</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div id="container">
     <div id="header">
         <div>
@@ -17,7 +42,7 @@
                 <img src="images/line_maintop_gray.png">
                 <a href="register.html">회원가입</a>
                 <img src="images/line_maintop_gray.png">
-                <a href="javascript:showLogin()">로그인</a>
+                <a class="login">로그인</a>
             </div>
         </div>
     </div>
@@ -62,6 +87,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <script src="libs/jquery-3.6.1.min.js"></script> <!-- DatePicker ??? ????  -->
 <script src="libs/jquery-ui/jquery-ui.min.js"></script>

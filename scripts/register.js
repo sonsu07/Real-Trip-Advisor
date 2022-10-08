@@ -185,6 +185,7 @@ checkName();
 genderCheck();
 yearCheck();
 register();
+backBtn()
 
 // // 임시로 제출기능 막기
 // document.querySelector('#form-register').addEventListener('submit', function (e) {
@@ -193,7 +194,9 @@ register();
 
 function register() {
     let formRegister = document.querySelector('#form-register');
-    formRegister.addEventListener('submit', function () {
+    formRegister.addEventListener('submit', function (e) {
+        e.preventDefault();
+
         let id = document.querySelector('#inp-id').value;
         let password = document.querySelector('#inp-password').value;
         let email = document.querySelector('#inp-email').value;
@@ -228,4 +231,11 @@ function submit(id, password, email, name, birthYear, gender) {
             console.error('Error', xhr.status, xhr.statusText);
         }
     };
+}
+
+function backBtn() {
+    let backBtn = document.querySelector('#btn-back');
+    backBtn.addEventListener('click', function (e) {
+        location.href = 'http://localhost:63342/Real-Trip-Advisor/index.html';
+    })
 }
