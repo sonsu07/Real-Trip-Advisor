@@ -184,8 +184,48 @@ checkPW();
 checkName();
 genderCheck();
 yearCheck();
+register();
 
-// 임시로 제출기능 막기
-document.querySelector('#form-register').addEventListener('submit', function (e) {
-    e.preventDefault();
-})
+// // 임시로 제출기능 막기
+// document.querySelector('#form-register').addEventListener('submit', function (e) {
+//     e.preventDefault();
+// })
+
+function register() {
+    let formRegister = document.querySelector('#form-register');
+    formRegister.addEventListener('submit', function () {
+        let id = document.querySelector('#inp-id').value;
+        let password = document.querySelector('#inp-password').value;
+        let email = document.querySelector('#inp-email').value;
+        let name = document.querySelector('#inp-user-name').value;
+        let birthYear = document.querySelector('#inp-year-birth');
+        let gender = document.querySelector('.background-blue').value;
+
+        submit(id, password, email, name, birthYear, gender);
+    })
+}
+
+function submit(id, password, email, name, birthYear, gender) {
+
+    let params = new FormData();
+    params.append('id', 'id');
+    params.append('password', 'password');
+    params.append('email', 'email');
+    params.append('name', 'name');
+    params.append('birthYear', 'birthYear');
+    params.append('gender', 'gender');
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'some-api-url');
+    xhr.setRequestHeader('content-type', 'application/json');
+    xhr.send(params);
+    xhr.onload = () => {
+        if (xhr.status === 200 || xhr.status === 201) {
+            // console.log('success');
+            alert('success');
+        } else {
+            alert('error');
+            console.error('Error', xhr.status, xhr.statusText);
+        }
+    };
+}
