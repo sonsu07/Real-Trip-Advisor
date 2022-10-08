@@ -55,10 +55,11 @@ function getDetail(id) {
             // console.log(res);
 
             updateStringData(res);
+            initMap(res.position.x, res.position.y);
             createSwiperElem(res);
             swiperSetting();
 
-            initMap(res.position.x, res.position.y);
+
             getCookiesData(res);
         } else {
             console.error('Error', xhr.status, xhr.statusText);
@@ -171,7 +172,6 @@ function getCookiesData(data) {
 
         setCookie('MYTRIPS', JSON.stringify(myTrips));
         console.log(myTrips);
-
     })
 }
 
