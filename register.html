@@ -4,19 +4,12 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
     <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/component.js"></script>
 </head>
 <body class="gray-bg">
 <div id="container">
-    <div id="header" class="inverted">
-        <div>
-            <a href="index.html"><span></span></a>
-            <div class="menu-items right">
-                <a href="register.html">회원가입</a>
-                <img src="images/line_maintop_gray.png" />
-                <a href="javascript:showLogin()">로그인</a>
-            </div>
-        </div>
-    </div>
+    <header-main></header-main>
+
     <div id="body">
         <div class="form-box md-box">
             <div class="inner">
@@ -47,38 +40,38 @@
 
                     <div class="terms">
                         <div class="terms-title">
-                            <label htmlFor="check-all" class="inp-terms">
-                                <input type="checkbox" id="check-all" name="check"/>
+                            <label htmlFor="check-all" class="inp-terms-all">
+                                <input type="checkbox" id="check-all" name="checkAll"/>
                                 <span>선택 포함 전체 약관 동의</span>
                             </label>
                         </div>
                         <div class="terms-sub">
                             <div class="terms-first">
                                 <label htmlFor="check-first" class="inp-terms">
-                                    <input type="checkbox" id="check-first" name="check"/>
+                                    <input type="checkbox" id="check-first" name="check" class="check"/>
                                     <span>이용약관 동의(필수)</span>
                                 </label>
-                                <a href="">약관 보기 ></a>
+                                <a href="terms.html">약관 보기 ></a>
                             </div>
                             <div class="terms-second">
                                 <label htmlFor="check-second" class="inp-terms">
-                                    <input type="checkbox" id="check-second" name="check"/>
+                                    <input type="checkbox" id="check-second" name="check" class="check"/>
                                     <span>이벤트, 혜택 알림 수신 동의(선택)</span>
                                 </label>
                             </div>
                             <div class="terms-third">
                                 <label htmlFor="check-third" class="inp-terms">
-                                    <input type="checkbox" id="check-third" name="check"/>
+                                    <input type="checkbox" id="check-third" name="check" class="check"/>
                                     <span>성년, 생년 정보 제공 동의(선택)</span>
                                 </label>
-                                <a href="">내용 확인 ></a>
+                                <a href="birthTerms.html">내용 확인 ></a>
                             </div>
                             <div class="terms-fourth">
                                 <label htmlFor="check-fourth" class="inp-terms">
-                                    <input type="checkbox" id="check-fourth" name="check"/>
+                                    <input type="checkbox" id="check-fourth" name="check" class="check"/>
                                     <span>개인 정보 수집 및 이용 동의(필수)</span>
                                 </label>
-                                <a href="">내용 확인 ></a>
+                                <a href="personalInfoTerms.html">내용 확인 ></a>
                             </div>
                         </div>
                     </div>

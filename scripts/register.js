@@ -128,7 +128,7 @@ function yearCheck() {
         // console.log(yearValue);
 
         if (checkYear === false) {
-            yearWarning.innerHTML = '정확히 입력해주세요.';
+            yearWarning.innerHTML = '숫자 4자리 수를 입력해주세요.';
         } else {
             yearWarning.innerHTML = '';
         }
@@ -157,6 +157,26 @@ function genderCheck() {
         }
     })
 }
+
+let checkAll = document.querySelector('#check-all');
+checkAll.addEventListener('change', function (e) {
+    let check = document.querySelectorAll('.check');
+    console.log(this);
+
+
+    if (this.checked) {
+        check.forEach((item, idx) => {
+            item.checked = true;
+        })
+        // checkFirst.checked = true;
+        console.log('체크됨');
+    } else {
+        check.forEach((item, idx) => {
+            item.checked = false;
+        })
+        console.log('체크안됨');
+    }
+})
 
 checkId();
 checkEmail();
