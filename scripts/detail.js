@@ -34,7 +34,6 @@ function createSwiperElem(data) {
 
        swiperWrapper.append(swiperSlide);
    })
-
 }
 
 function getDetail(id) {

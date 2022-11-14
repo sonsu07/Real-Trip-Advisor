@@ -112,8 +112,6 @@ function createListItem(data) {
     return template1;
 }
 
-
-
 scrollEvent()
 CalendarWidget();
 formSubmit();

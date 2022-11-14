@@ -187,10 +187,10 @@ yearCheck();
 register();
 backBtn()
 
-// // 임시로 제출기능 막기
-// document.querySelector('#form-register').addEventListener('submit', function (e) {
-//     e.preventDefault();
-// })
+// 임시로 제출기능 막기
+document.querySelector('#form-register').addEventListener('submit', function (e) {
+    e.preventDefault();
+})
 
 function register() {
     let formRegister = document.querySelector('#form-register');
