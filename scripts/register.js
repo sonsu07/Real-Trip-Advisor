@@ -142,7 +142,11 @@ function genderCheck() {
     male.addEventListener('click', function (e) {
         if (male.className === 'background-blue') {
             male.classList.remove('background-blue')
-        } else {
+        } else if (female.classList.contains('background-blue')) {
+            female.classList.remove('background-blue');
+            male.classList.add('background-blue');
+        }
+        else {
             male.classList.add('background-blue');
         }
     })
@@ -152,10 +156,18 @@ function genderCheck() {
     female.addEventListener('click', function (e) {
         if (female.className === 'background-blue') {
             female.classList.remove('background-blue')
-        } else {
+        } else if (male.classList.contains('background-blue')) {
+            male.classList.remove('background-blue');
+            female.classList.add('background-blue');
+        }
+        else {
             female.classList.add('background-blue');
         }
     })
+
+    if (female.classList.contains('background-blue')) {
+
+    }
 }
 
 let checkAll = document.querySelector('#check-all');
