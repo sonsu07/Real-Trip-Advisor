@@ -248,6 +248,6 @@ function submit(id, password, email, name, birthYear, gender) {
 function backBtn() {
     let backBtn = document.querySelector('#btn-back');
     backBtn.addEventListener('click', function (e) {
-        location.href = 'http://localhost:63342/Real-Trip-Advisor/index.html';
+        location.href = '/';
     })
 }

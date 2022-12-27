@@ -1,4 +1,4 @@
-import {getCookie, setCookie, deleteCookie} from "../module/cookie.js";
+import {getCookie, setCookie} from "../module/cookie.js";
 
 function swiperSetting() {
     const swiper = new Swiper('.swiper', {
@@ -6,13 +6,10 @@ function swiperSetting() {
         loop: true,
         spaceBetween: 30,
 
-        // If we need pagination
         pagination: {
             el: '.swiper-pagination',
-            // type: 'fraction',
-            // el: '.swiper-scrollbar',
+
         },
-        // Navigation arrows
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -43,23 +40,22 @@ function getDetail(id) {
     let query = Object.keys(params)
         .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
         .join('&');
-    let url = 'https://javascript-basic.appspot.com/locationDetail?' + query;
-
+    let url = 'https://real-trip-advisor-db.fly.dev/?' + query;
+    console.log(url);
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url);
     xhr.send();
     xhr.onload = (e) => {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const res = JSON.parse(xhr.response);
-            // console.log(res);
 
-            updateStringData(res);
-            initMap(res.position.x, res.position.y);
-            createSwiperElem(res);
+            updateStringData(res[id]);
+
+            initMap(res[id].position.x, res[id].position.y);
+            createSwiperElem(res[id]);
             swiperSetting();
 
-
-            getCookiesData(res);
+            getCookiesData(res[id]);
         } else {
             console.error('Error', xhr.status, xhr.statusText);
         }
@@ -82,7 +78,6 @@ function parseId(str) {
 
 function getId() {
     let id = parseId(window.location.search);
-    // console.log(window.location.search);
     getDetail(id)
 }
 
@@ -173,8 +168,6 @@ function getCookiesData(data) {
         console.log(myTrips);
     })
 }
-
-
 
 getId();
 

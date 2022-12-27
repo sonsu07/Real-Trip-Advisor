@@ -34,7 +34,7 @@ function getData() {
             // e.preventDefault();
 
             console.log(`${idx}번 요소 클릭함`);
-            window.location.href = `http://localhost:63342/real-trip-advisor/detail.html?id=${data.id}` // 오리진 상태에 따라서 바꿔주자.
+            window.location.href = `/detail` // 오리진 상태에 따라서 바꿔주자.
         })
 
         let pos = {

@@ -158,11 +158,11 @@ class header extends HTMLElement {
             `
             <div id="header" class="inverted">
                 <div>
-                    <a href="index.html"><span></span></a>
+                    <a href="/"><span></span></a>
                     <div class="menu-items right">
-                        <a href="myTrip.html">마이트립</a>
+                        <a href="/myTrip">마이트립</a>
                         <img src="images/line_maintop_gray.png">
-                        <a href="register.html">회원가입</a>
+                        <a href="/register">회원가입</a>
                         <img src="images/line_maintop_gray.png">
                     </div>
                 </div>

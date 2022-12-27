@@ -1,12 +1,10 @@
+
 // 헤더 개선
 // 스크롤을 아래로 내렸을 때, 헤더 배경색을 흰색으로 바꾸고 글자색도 진하게 변경
-// import axios from "axios";
-
 function scrollEvent() {
     window.addEventListener('scroll', function () {
         let top = document.scrollingElement.scrollTop; // 스크롤바 위치
         let header = document.querySelector('#header');
-        // console.log(top);
         if (top > 0) { // 스크롤 최상단 이외에서 inverted 클래스 추가
             header.classList.add('inverted');
         } else {
@@ -41,7 +39,7 @@ function search(from, to) {
     let query = Object.keys(params)
         .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
         .join('&');
-    let url = 'https://javascript-basic.appspot.com/searchLocation?' + query;
+    let url = 'https://real-trip-advisor-db.fly.dev/?' + query;
 
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url);
@@ -97,7 +95,7 @@ function indexLogin() {
 
     let registerBtn = document.querySelector('.register-btn');
     registerBtn.addEventListener('click', function (e) {
-        location.href = 'http://localhost:63342/Real-Trip-Advisor/register.html';
+        location.href = '/register';
     })
 }
 
@@ -110,9 +108,9 @@ function createListItem(data) {
     template1.querySelector('.list-item-city-name').innerHTML = data.cityName;
 
     template1.addEventListener('click', function () {
-        window.location = 'detail.html?id=' + data.id;
+        window.location = 'detail?id=' + data.id;
     })
-
+    // 'detail.html?id=' + data.id;
     return template1;
 }
 
