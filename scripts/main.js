@@ -1,5 +1,7 @@
 // 헤더 개선
 // 스크롤을 아래로 내렸을 때, 헤더 배경색을 흰색으로 바꾸고 글자색도 진하게 변경
+// import axios from "axios";
+
 function scrollEvent() {
     window.addEventListener('scroll', function () {
         let top = document.scrollingElement.scrollTop; // 스크롤바 위치
@@ -31,6 +33,7 @@ function CalendarWidget() {
 
 // ajax를 이용한 검색기능.
 function search(from, to) {
+
     const params = {
         from: from,
         to: to,
@@ -62,6 +65,7 @@ function search(from, to) {
             console.error('Error', xhr.status, xhr.statusText);
         }
     }
+
 }
 
 // 폼 제출 기능
