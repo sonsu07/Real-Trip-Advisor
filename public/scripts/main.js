@@ -53,7 +53,6 @@ function search(from, to) {
                 let listPanel = document.querySelector('#list-panel');
                 res.forEach(data => {
                     let item = createListItem(data);
-                    // listPanel.appendChild(item);
                     listPanel.append(item);
                 })
                 const listBg = document.querySelector('#list-bg');
